@@ -1,5 +1,6 @@
 package steps;
 
+import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.E;
@@ -8,9 +9,12 @@ import io.cucumber.java.pt.Quando;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.CadastroPage;
 import pages.LoginPage;
 
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 public class LoginStep {
@@ -22,10 +26,16 @@ public class LoginStep {
     public void before() {
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-        driver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
         cadastroPage = new CadastroPage(driver);
         loginPage = new LoginPage(driver);
     }
+
+    @After
+    public void after() {
+        driver.quit();
+    }
+
 
     @Dado("que esteja na pagina inicial: {string}")
     public void queEstejaNaPaginaInicial(String url) {
@@ -45,13 +55,15 @@ public class LoginStep {
 
     @Entao("valido que a pagina de boas vindas foi carregada com sucesso")
     public void validoQueAPaginaDeBoasVindasFoiCarregada() {
-        Assert.assertTrue(driver.getCurrentUrl().contains("/homepage"));
+        String url = "http://localhost:3000/home";
+        new WebDriverWait(driver, 5000).until(ExpectedConditions.urlToBe(url));
+        Assert.assertTrue(driver.getCurrentUrl().contains(url));
     }
 
     @Dado("possuo cadastro")
     public void possuoCadastro() {
         cadastroPage.clicarRegistrar();
-        cadastroPage.preencherEmail("teste@teste.com.br");
+        cadastroPage.preencherEmail("teste10@teste.com.br");
         cadastroPage.preencherNome("QA Academy");
         cadastroPage.preencherSenha("teste");
         cadastroPage.preencherConfirmacaoSenha("teste");
