@@ -15,6 +15,8 @@ import pages.CadastroPage;
 import pages.LoginPage;
 
 import java.time.Duration;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class LoginStep {
@@ -67,6 +69,23 @@ public class LoginStep {
         cadastroPage.preencherNome("QA Academy");
         cadastroPage.preencherSenha("teste");
         cadastroPage.preencherConfirmacaoSenha("teste");
+        cadastroPage.clicarEmCriarComSaldo();
+        cadastroPage.clicarCadastrar();
+        cadastroPage.clicarFechar();
+    }
+
+    @Dado("preencho o cadastro com os dados")
+    public void possuoCadastroDataTable(List<Map<String, String>> dataTable) {
+        String email = dataTable.get(2).get("Email");
+        String nome = dataTable.get(1).get("Nome");
+        String senha = dataTable.get(1).get("Senha");
+        String confirmacao = dataTable.get(1).get("Confirmacao");
+
+        cadastroPage.clicarRegistrar();
+        cadastroPage.preencherEmail(email);
+        cadastroPage.preencherNome(nome);
+        cadastroPage.preencherSenha(senha);
+        cadastroPage.preencherConfirmacaoSenha(confirmacao);
         cadastroPage.clicarEmCriarComSaldo();
         cadastroPage.clicarCadastrar();
         cadastroPage.clicarFechar();
