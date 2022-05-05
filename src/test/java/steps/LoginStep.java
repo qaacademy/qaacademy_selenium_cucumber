@@ -32,6 +32,7 @@ public class LoginStep {
         ChromeOptions chrome_options = new ChromeOptions();
         chrome_options.addArguments("--headless");
         driver = new ChromeDriver(chrome_options);
+        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
         cadastroPage = new CadastroPage(driver);
