@@ -31,6 +31,15 @@ pipeline {
 
                     }
         }
+        stage('Test E2E') {
+                            steps {
+                                // Download do projeto de teste unitario
+                                bat 'echo Baixando testes e2e'
+                                git 'https://github.com/qaacademy/qaacademy_selenium_cucumber.git'
+                                bat 'mvn clean install -Dtest=Runner test'
+
+                            }
+        }
 
     }
 }
