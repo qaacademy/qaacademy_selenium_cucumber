@@ -18,6 +18,7 @@ import java.time.Duration;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class LoginStep {
     WebDriver driver;
@@ -26,6 +27,7 @@ public class LoginStep {
 
     @Before
     public void before() {
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
