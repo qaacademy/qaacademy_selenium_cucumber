@@ -27,7 +27,7 @@ pipeline {
                         sh 'echo Baixando projeto BugBank'
                         git branch: 'main', url: 'https://github.com/qaacademy/bugbank.git'
                         // Executar os testes unitarios usando Maven
-                        sh "nohup ./run.sh &"
+//                         sh "nohup ./run.sh &"
 
                     }
 
