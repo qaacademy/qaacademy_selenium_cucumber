@@ -21,25 +21,6 @@ pipeline {
                 }
             }
         }
-        stage('Build BugBank') {
-                    steps {
-                        // Download do projeto de teste unitario
-                        bat 'echo Baixando projeto BugBank'
-                        git branch: 'main', url: 'https://github.com/qaacademy/bugbank.git'
-                        // Executar os testes unitarios usando Maven
-//                         sh "nohup ./run.sh &"
 
-                    }
-
-        }
-        stage('Run e2e test') {
-                            steps {
-                                // Download do projeto de teste unitario
-                                bat 'echo Baixando projeto test'
-                                git 'https://github.com/qaacademy/qaacademy_selenium_cucumber.git'
-                                bat 'mvn clean install -Dtest=Runner test'
-                            }
-
-                }
     }
 }
