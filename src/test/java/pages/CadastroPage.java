@@ -12,12 +12,12 @@ public class CadastroPage {
 
     //Variavel maiuscula quer Final. Uma variavel que muda pouco ou nunca o seu valor.
     String REGISTRAR = "//button[contains(text(),'Registrar')]";
-    String EMAIL = "//input[@id='inputEmail']";
-    String NOME = "//input[@id='inputName']";
-    String SENHA = "//input[@id='inputPassword']";
-    String CONFIRM_SENHA = "//input[@id='inputPasswordConfirmation']";
-    String CRIAR_SALDO = "//span[@type='checkbox']";
-    String CADASTRAR = "//a[@id='btnRegister']";
+    String EMAIL = "//*[@id='__next']/div/div[2]/div/div[2]/form/div[2]/input";
+    String NOME = "//*[@id='__next']/div/div[2]/div/div[2]/form/div[3]/input";
+    String SENHA = "//*[@id='__next']/div/div[2]/div/div[2]/form/div[4]/div/input";
+    String CONFIRM_SENHA = "//*[@id='__next']/div/div[2]/div/div[2]/form/div[5]/div/input";
+    String CRIAR_SALDO = "//*[@id='__next']/div/div[2]/div/div[2]/form/div[6]/label/span";
+    String CADASTRAR = "//*[@id='__next']/div/div[2]/div/div[2]/form/button";
     String FECHAR = "//a[contains(text(),'Fechar')]";
 
     public CadastroPage(WebDriver driverParametro) {//Metodo construtor
