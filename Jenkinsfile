@@ -6,10 +6,10 @@ pipeline {
             steps {
                 // Download do projeto de teste unitario
                 bat 'echo Inicio dos testes unitarios Baixando projeto qaacademy_exercicios_junit.git'
-                git 'https://github.com/qaacademy/qaacademy_exercicios_junit.git'
+                git 'https://github.com/gupereirah/qaacademy_exercicios_junit-1.git'
 
                 // Executar os testes unitarios usando Maven
-//                 bat "mvn clean install test"
+                bat "mvn clean install test"
 
             }
             post {
