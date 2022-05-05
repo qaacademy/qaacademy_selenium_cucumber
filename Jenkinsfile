@@ -9,7 +9,7 @@ pipeline {
                 git 'https://github.com/qaacademy/qaacademy_exercicios_junit.git'
 
                 // Executar os testes unitarios usando Maven
-                bat "mvn clean install test"
+//                 bat "mvn clean install test"
 
             }
             post {
