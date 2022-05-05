@@ -5,11 +5,11 @@ pipeline {
         stage('Testes Unitarios') {
             steps {
                 // Download do projeto de teste unitario
-                sh 'echo Inicio dos testes unitarios Baixando projeto qaacademy_exercicios_junit.git'
+                bat 'echo Inicio dos testes unitarios Baixando projeto qaacademy_exercicios_junit.git'
                 git 'https://github.com/qaacademy/qaacademy_exercicios_junit.git'
 
                 // Executar os testes unitarios usando Maven
-                sh "mvn clean install test"
+                bat "mvn clean install test"
 
             }
             post {
@@ -24,7 +24,7 @@ pipeline {
         stage('Build BugBank') {
                     steps {
                         // Download do projeto de teste unitario
-                        sh 'echo Baixando projeto BugBank'
+                        bat 'echo Baixando projeto BugBank'
                         git branch: 'main', url: 'https://github.com/qaacademy/bugbank.git'
                         // Executar os testes unitarios usando Maven
 //                         sh "nohup ./run.sh &"
@@ -35,9 +35,9 @@ pipeline {
         stage('Run e2e test') {
                             steps {
                                 // Download do projeto de teste unitario
-                                sh 'echo Baixando projeto test'
+                                bat 'echo Baixando projeto test'
                                 git 'https://github.com/qaacademy/qaacademy_selenium_cucumber.git'
-                                sh 'mvn clean install -Dtest=Runner test'
+                                bat 'mvn clean install -Dtest=Runner test'
                             }
 
                 }
