@@ -27,7 +27,6 @@ pipeline {
                         // Download do projeto de teste unitario
                         bat 'echo Baixando Bugbank'
                         git 'https://github.com/qaacademy/bugbank.git'
-                        bat 'yarn'
                         bat 'echo Bugbank está em execução'
 
                     }
