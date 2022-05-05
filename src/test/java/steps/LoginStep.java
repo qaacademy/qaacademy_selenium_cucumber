@@ -28,9 +28,8 @@ public class LoginStep {
 
     @Before
     public void before() {
-        WebDriverManager.chromedriver().setup();
         ChromeOptions chrome_options = new ChromeOptions();
-        chrome_options.addArguments("--headless");
+//        chrome_options.addArguments("--headless");
         driver = new ChromeDriver(chrome_options);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
