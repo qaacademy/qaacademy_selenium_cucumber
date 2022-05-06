@@ -10,26 +10,31 @@ import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.CadastroPage;
 import pages.LoginPage;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.time.Duration;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class LoginStep {
+    String REMOTE_DRIVER = "http://localhost:4444/wd/hub";
     WebDriver driver;
     CadastroPage cadastroPage;
     LoginPage loginPage;
 
     @Before
-    public void before() {
+    public void before() throws MalformedURLException {
         ChromeOptions chrome_options = new ChromeOptions();
 //        chrome_options.addArguments("--headless");
-        driver = new ChromeDriver(chrome_options);
+        driver = new RemoteWebDriver(new URL(REMOTE_DRIVER), chrome_options);
+//        driver = new ChromeDriver(chrome_options);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
